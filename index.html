@@ -454,7 +454,7 @@ function createMessage(role, content) {
   msg.className = `message ${role}`;
   const avatar = document.createElement('div');
   avatar.className = 'avatar';
-  avatar.textContent = role === 'user' ? 'User' : 'User';
+  avatar.textContent = role === 'user' ? 'User' : 'Bot';
   const bubble = document.createElement('div');
   bubble.className = 'bubble';
   if (role === 'assistant') { bubble.innerHTML = renderMarkdown(content); addCopyButtons(bubble); }
