@@ -307,7 +307,7 @@ const PROVIDERS = {
   openai: {
     name: 'OpenAI',
     url: 'https://api.openai.com/v1/chat/completions',
-    badge: '<a href="https://platform.openai.com/api-keys" target="_blank">Get key â†—</a> (paid)',
+    badge: '<a href="https://platform.openai.com/api-keys" target="_blank">Get key (paid)',
     models: ['gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo', 'gpt-3.5-turbo'],
     authHeader: (key) => `Bearer ${key}`,
     format: 'openai',
@@ -315,7 +315,7 @@ const PROVIDERS = {
   groq: {
     name: 'Groq',
     url: 'https://api.groq.com/openai/v1/chat/completions',
-    badge: '<a href="https://console.groq.com/keys" target="_blank">Get free key â†—</a>',
+    badge: '<a href="https://console.groq.com/keys" target="_blank">Get free key</a>',
     models: ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'mixtral-8x7b-32768', 'gemma2-9b-it'],
     authHeader: (key) => `Bearer ${key}`,
     format: 'openai',
@@ -323,7 +323,7 @@ const PROVIDERS = {
   gemini: {
     name: 'Google Gemini',
     url: null, // built dynamically
-    badge: '<a href="https://aistudio.google.com/app/apikey" target="_blank">Get free key â†—</a>',
+    badge: '<a href="https://aistudio.google.com/app/apikey" target="_blank">Get free key</a>',
     models: ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-2.0-flash', 'gemini-2.0-flash-lite'],
     authHeader: null,
     format: 'gemini',
@@ -331,7 +331,7 @@ const PROVIDERS = {
   openrouter: {
     name: 'OpenRouter',
     url: 'https://openrouter.ai/api/v1/chat/completions',
-    badge: '<a href="https://openrouter.ai/keys" target="_blank">Get free key â†—</a>',
+    badge: '<a href="https://openrouter.ai/keys" target="_blank">Get free key</a>',
     models: ['meta-llama/llama-3.3-70b-instruct:free', 'mistralai/mistral-7b-instruct:free', 'google/gemma-3-27b-it:free', 'deepseek/deepseek-r1:free'],
     authHeader: (key) => `Bearer ${key}`,
     format: 'openai',
@@ -339,7 +339,7 @@ const PROVIDERS = {
   cohere: {
     name: 'Cohere',
     url: 'https://api.cohere.com/v2/chat',
-    badge: '<a href="https://dashboard.cohere.com/api-keys" target="_blank">Get free key â†—</a>',
+    badge: '<a href="https://dashboard.cohere.com/api-keys" target="_blank">Get free key</a>',
     models: ['command-r-plus', 'command-r', 'command'],
     authHeader: (key) => `Bearer ${key}`,
     format: 'cohere',
