@@ -299,11 +299,10 @@
       <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
     </button>
   </div>
-  <div class="hint">Enter to send Â· Shift+Enter for new line Â· Your API key stays in your browser only</div>
+  <div class="hint">Enter to send· Shift+Enter for new line· Your API key stays in your browser only</div>
 </div>
 
 <script>
-// â”€â”€ Provider configs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const PROVIDERS = {
   openai: {
     name: 'OpenAI',
@@ -355,7 +354,6 @@ const PROVIDERS = {
   },
 };
 
-// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let messages = [];
 let isStreaming = false;
 let customEndpoint = '';
@@ -371,7 +369,6 @@ const systemPromptEl  = document.getElementById('system-prompt-input');
 const providerBadge   = document.getElementById('provider-badge');
 const clearBtn        = document.getElementById('clear-btn');
 
-// â”€â”€ Persist & restore settings â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function saveSettings() {
   localStorage.setItem('provider', providerSelect.value);
   localStorage.setItem('model_' + providerSelect.value, modelSelect.value);
@@ -435,7 +432,6 @@ function fillSuggestion(el) {
   userInput.focus();
 }
 
-// â”€â”€ Markdown helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderMarkdown(text) { return marked.parse(text, { breaks: true, gfm: true }); }
 function addCopyButtons(bubble) {
   bubble.querySelectorAll('pre').forEach(pre => {
@@ -453,13 +449,12 @@ function addCopyButtons(bubble) {
   bubble.querySelectorAll('pre code').forEach(el => { if (!el.dataset.highlighted) hljs.highlightElement(el); });
 }
 
-// â”€â”€ Message elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function createMessage(role, content) {
   const msg = document.createElement('div');
   msg.className = `message ${role}`;
   const avatar = document.createElement('div');
   avatar.className = 'avatar';
-  avatar.textContent = role === 'user' ? 'ðŸ‘¤' : 'ðŸ¤–';
+  avatar.textContent = role === 'user' ? 'User' : 'User';
   const bubble = document.createElement('div');
   bubble.className = 'bubble';
   if (role === 'assistant') { bubble.innerHTML = renderMarkdown(content); addCopyButtons(bubble); }
@@ -470,7 +465,7 @@ function createMessage(role, content) {
 function createThinking() {
   const msg = document.createElement('div');
   msg.className = 'message bot thinking';
-  msg.innerHTML = `<div class="avatar">ðŸ¤–</div><div class="bubble">Thinking <div class="dots"><span></span><span></span><span></span></div></div>`;
+  msg.innerHTML = `<div class="avatar">User</div><div class="bubble">Thinking <div class="dots"><span></span><span></span><span></span></div></div>`;
   return msg;
 }
 function scrollToBottom() { chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' }); }
@@ -526,7 +521,6 @@ async function callCohere(apiKey, model, sysPrompt, msgs) {
   return data.message?.content?.[0]?.text || '';
 }
 
-// â”€â”€ Main send â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function sendMessage() {
   const text = userInput.value.trim();
   if (!text || isStreaming) return;
