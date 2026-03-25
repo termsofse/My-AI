@@ -465,7 +465,7 @@ function createMessage(role, content) {
 function createThinking() {
   const msg = document.createElement('div');
   msg.className = 'message bot thinking';
-  msg.innerHTML = `<div class="avatar">User</div><div class="bubble">Thinking <div class="dots"><span></span><span></span><span></span></div></div>`;
+  msg.innerHTML = `<div class="avatar">Bot</div><div class="bubble">Thinking <div class="dots"><span></span><span></span><span></span></div></div>`;
   return msg;
 }
 function scrollToBottom() { chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' }); }
